@@ -1,0 +1,24 @@
+<?php
+
+require_once 'AppController.php';
+
+class DefaultController extends AppController {
+    public function login() {
+        $this->render('login');
+    }
+
+    public function register() {
+        $this->render('register');
+    }
+    public function learning() {
+        $this->render('learning');
+    }
+
+    public function leaderboard() {
+        $this->render('leaderboard');
+    }
+
+    public function news() {
+        $this->render('news');
+    }
+}
