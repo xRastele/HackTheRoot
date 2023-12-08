@@ -1,0 +1,10 @@
+.messages {
+    font-size: 2vh;
+    color: #ECEFF3;
+    text-align: center;
+    font-style: normal;
+    line-height: normal;
+    max-width: 50vh;
+    width: 100%;
+    height: 5vh;
+}
