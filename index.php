@@ -10,4 +10,7 @@ Routing::get('register', 'DefaultController');
 Routing::get('leaderboard', 'DefaultController');
 Routing::get('news', 'DefaultController');
 Routing::get('learning', 'DefaultController');
+
+Routing::post('login', 'SecurityController');
+
 Routing::run($path);

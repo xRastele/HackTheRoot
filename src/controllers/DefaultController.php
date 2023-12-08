@@ -3,7 +3,7 @@
 require_once 'AppController.php';
 
 class DefaultController extends AppController {
-    public function login() {
+    public function index() {
         $this->render('login');
     }
 
