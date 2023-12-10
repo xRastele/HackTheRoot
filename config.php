@@ -1,6 +1,6 @@
 <?php
 
-const USERNAME = 'postgresql';
-const PASSWORD = 'postgresql';
+const USERNAME = 'postgres';
+const PASSWORD = 'postgres';
 const HOST = 'localhost';
 const DATABASE = 'HackTheRoot';
