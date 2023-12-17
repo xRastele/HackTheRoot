@@ -1,0 +1,13 @@
+p {
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 2vh;
+}
+
+a {
+    color: #0085FF;
+}
+
+a:visited {
+    color: #0085FF;
+}
