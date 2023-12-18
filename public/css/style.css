@@ -9,7 +9,7 @@ body {
     background: linear-gradient(180deg, #0D1B2B 0%, #1A314B 100%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
@@ -69,6 +69,32 @@ button {
 
 img {
     height: 50%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: #64EE85;
+}
+
+nav {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    font-size: 3vh;
+}
+
+nav img {
+    height: 100%;
 }
 
 @media only screen and (max-device-width: 420px) {
