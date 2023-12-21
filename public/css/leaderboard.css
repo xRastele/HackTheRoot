@@ -1,0 +1,84 @@
+.sub-container {  display: grid;
+    grid-template-columns: 0.8fr 1.9fr 0.8fr;
+    grid-template-rows: 0.8fr 2.5fr 0.2fr;
+    gap: 0px 0px;
+    grid-auto-flow: column dense;
+    align-content: center;
+    align-items: stretch;
+    grid-template-areas:
+    ". leaderboard-top3 ."
+    ". leaderboard-rest ."
+    ". leaderboard-buttons .";
+    width: 50%;
+}
+
+.leaderboard-top3 {  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.7fr repeat(2, 1.3fr) 0.7fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    ". . ."
+    ". top1 ."
+    "top2 . top3"
+    ". . .";
+    grid-area: leaderboard-top3;
+}
+
+.top1 { grid-area: top1; }
+
+.top2 { grid-area: top2; }
+
+.top3 { grid-area: top3; }
+
+.leaderboard-rest {  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2.1fr 0.2fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    ". . ."
+    ". . .";
+    grid-area: leaderboard-rest;
+}
+
+.leaderboard-buttons {  display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "buttons-left buttons-count buttons-right";
+    grid-area: leaderboard-buttons;
+}
+
+.buttons-right { grid-area: buttons-right; }
+
+.buttons-left { grid-area: buttons-left; }
+
+.buttons-count { grid-area: buttons-count; }
+
+
+
+.sub-container {
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.top1,
+.top2,
+.top3,
+.leaderboard-rest,
+.leaderboard-buttons
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.leaderboard-rest {
+    flex-direction: column;
+    justify-content: space-evenly;
+}

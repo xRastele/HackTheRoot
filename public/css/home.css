@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.sub-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "first-box second-box"
+    "third-box fourth-box";
+    width: 100%;
+    align-items: center;
+}
+
+.first-box {
+    grid-area: first-box;
+}
+
+.second-box {
+    grid-area: second-box;
+}
+
+.third-box {
+    grid-area: third-box;
+}
+
+.fourth-box {
+    grid-area: fourth-box;
+}
+
+.first-box,
+.second-box,
+.third-box,
+.fourth-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-container p {
+    font-size: 10vh;
+    color: white;
+}

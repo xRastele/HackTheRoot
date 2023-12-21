@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Inter, serif;
+    font-family: Inter;
 }
 
 .container {
@@ -83,6 +83,10 @@ a:hover {
     color: #64EE85;
 }
 
+nav a.active {
+    color: #64EE85;
+}
+
 nav {
     height: 10%;
     display: flex;
@@ -91,6 +95,9 @@ nav {
     align-items: center;
     width: 100%;
     font-size: 3vh;
+    box-sizing: border-box;
+    border: 5px solid #0D1825;
+    background: radial-gradient(37.54% 48.12% at 50% 51.88%, rgba(59, 116, 183, 0.47) 0%, rgba(20, 46, 78, 0.00) 100%);
 }
 
 nav img {
