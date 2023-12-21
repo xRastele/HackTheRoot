@@ -2,5 +2,5 @@
 
 const USERNAME = 'postgres';
 const PASSWORD = 'postgres';
-const HOST = 'localhost';
+const HOST = 'postgres';
 const DATABASE = 'HackTheRoot';
