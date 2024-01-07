@@ -80,7 +80,7 @@ INSERT INTO modules (module_id, module_name) VALUES (1, 'ATTACK'), (2, 'GENERAL'
 INSERT INTO lessons (lesson_id, module_id, lesson_name) VALUES (1, 1, 'SQL Injection'), (2, 1, 'Cross-Site Scripting (XSS)'), (3, 1, 'File Inclusion');
 INSERT INTO rewards (reward_id, reward_points) VALUES (1, 100), (2, 200), (3, 300), (4, 400), (5, 500);
 INSERT INTO challenges (challenge_id, lesson_id, reward_id) VALUES (7, 3, 1), (2, 1, 2), (5, 2, 2), (8, 3, 2), (1, 1, 1), (9, 3, 3), (3, 1, 3), (6, 2, 3), (4, 2, 1);
-INSERT INTO users (user_id, email, username, password) VALUES (2, 'asdf123@gmail.com', 'testuser2', 'qwerty'), (1, 'asdf@gmail.com', 'testuser1', 'qwerty');
+INSERT INTO users (email, username, password) VALUES ('admin', 'admin', 'admin'), ('admin2', 'admin2', 'admin2');
 INSERT INTO leaderboard (user_id, points_challenges) VALUES (1, 100), (2, 200);
 INSERT INTO notifications (notification_id, user_id, notification_date, notification_text) VALUES (1, 1, '2023-11-09 11:21:01', NULL), (2, 2, '2023-11-09 11:26:00', NULL), (3, 2, '2023-11-09 11:26:02', NULL);
 INSERT INTO teams (team_id, team_name) VALUES (1, 'h4ck3r5'), (2, 'h4ck3rm3n');
