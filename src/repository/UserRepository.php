@@ -25,4 +25,33 @@ class UserRepository extends Repository
             $user['password']
         );
     }
+
+    public function getAllUsers(): array
+    {
+        $stmt = $this->database->connect()->prepare('SELECT * FROM users;');
+        $stmt->execute();
+
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = [];
+
+        foreach ($users as $user) {
+            $result[] = new User($user['email'], $user['username'], $user['password']);
+        }
+
+        return $result;
+    }
+
+    public function addUser(User $user)
+    {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users (email, username, password)
+            VALUES (?, ?, ?)
+        ');
+
+        $stmt->execute([
+            $user->getEmail(),
+            $user->getUsername(),
+            $user->getPassword()
+        ]);
+    }
 }

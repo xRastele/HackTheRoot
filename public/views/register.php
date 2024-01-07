@@ -11,7 +11,15 @@
         <img src="public/img/logo.svg" alt="Logo">
     </div>
     <div class="login-container">
-        <form>
+        <form action="register" method="POST">
+            <div class="messages">
+                <?php if(isset($messages)) {
+                    foreach ($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
             <input name="email" type="text" placeholder="Email">
             <input name="username" type="username" placeholder="Username">
             <input name="password" type="password" placeholder="Password">

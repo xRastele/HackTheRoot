@@ -13,5 +13,6 @@ Routing::get('learning', 'DefaultController');
 Routing::get('home', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
+Routing::post('register', 'SecurityController');
 
 Routing::run($path);
