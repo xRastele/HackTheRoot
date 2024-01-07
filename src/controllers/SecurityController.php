@@ -29,19 +29,15 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['User doesn\'t exist']]);
         }
 
-        if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email doesn\'t exist']]);
-        }
+        list($salt, $hashedPassword) = explode('$', $user->getPassword());
+        $hashedInputPassword = hash('sha512', $salt . $password);
 
-        if ($user->getPassword() !== $password) {
-            var_dump($email);
-            var_dump($password);
-            var_dump($user);
+        if ($hashedInputPassword !== $hashedPassword) {
             return $this->render('login', ['messages' => ['Wrong password']]);
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/register");
+        header("Location: {$url}/home");
 
         //return $this->render('news');
     }
@@ -71,6 +67,6 @@ class SecurityController extends AppController
         $user = new User($email, $username, $passwordWithSalt);
 
         $this->userRepository->addUser($user);
-        return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registered! You can now login below.']]);
     }
 }
