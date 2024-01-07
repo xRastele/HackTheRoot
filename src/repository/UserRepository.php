@@ -54,4 +54,18 @@ class UserRepository extends Repository
             $user->getPassword()
         ]);
     }
+
+    public function doesUserExist($email, $username): bool
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users WHERE email = :email OR username = :username
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user !== false;
+    }
 }

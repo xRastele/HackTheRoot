@@ -52,9 +52,17 @@ class SecurityController extends AppController
             return $this->render('register');
         }
 
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $email = $_POST['email'] ?? null;
+        $username = $_POST['username'] ?? null;
+        $password = $_POST['password'] ?? null;
+
+        if (empty($email) || empty($username) || empty($password)) {
+            return $this->render('register', ['messages' => ['Please fill in all fields']]);
+        }
+
+        if ($this->userRepository->doesUserExist($email, $username)) {
+            return $this->render('register', ['messages' => ['Username or email already exists']]);
+        }
 
         $salt = bin2hex(random_bytes(16));
         $hashedPassword = hash('sha512', $salt . $password);
@@ -63,7 +71,6 @@ class SecurityController extends AppController
         $user = new User($email, $username, $passwordWithSalt);
 
         $this->userRepository->addUser($user);
-
-        return $this->render('register', ['messages' => ['You\'ve been succesfully registered!']]);
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registered!']]);
     }
 }
