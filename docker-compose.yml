@@ -11,7 +11,7 @@ services:
       - .:/app/
     links:
       - php
-      - postgres
+      - db
 
   php:
     build:
@@ -19,21 +19,15 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - .:/app/
-    links:
-      - postgres
 
-  postgres:
-    build:
-      context: .
-      dockerfile: docker/postgres/Dockerfile
-    volumes:
-      - pg_data:/var/lib/postgresql/data
+  db:
+    image: postgres:latest
     environment:
-      POSTGRES_DB: HackTheRoot
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: HackTheRoot
     ports:
-      - 5432:5432
-
-volumes:
-  pg_data:
+      - "5433:5432"
+    volumes:
+      - .:/app/
+      - ./data:/var/lib/postgresql/data

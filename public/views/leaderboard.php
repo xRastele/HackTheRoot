@@ -10,16 +10,25 @@
     <?php include __DIR__.'/navbar.php'; ?>
     <div class="sub-container">
         <div class="leaderboard-top3">
-            <div class="top1">TOP1</div>
-            <div class="top2">TOP2</div>
-            <div class="top3">TOP3</div>
+            <?php foreach ($leaderboard->getUsers() as $index => $user): ?>
+                <?php if ($index < 3): ?>
+                    <div class="top<?= $index + 1; ?>">
+                        <img src="public/img/crown.svg">
+                        <?= $user->getUsername() ?> <br> <?= $user->getPoints(); ?> pts
+                    </div>
+                <?php else: ?>
+                    <?php break; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
         <div class="leaderboard-rest">
-            <p>topss</p>
-            <p>topss</p>
-            <p>topss</p>
-            <p>topss</p>
-            <p>topss</p>
+            <?php foreach ($leaderboard->getUsers() as $index => $user): ?>
+                <?php if ($index >= 3): ?>
+                    <div class="user-entry">
+                        <?= $user->getUsername() . ' - ' . $user->getPoints(); ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </div>
         <div class="leaderboard-buttons">
             <div class="buttons-left"><-</div>

@@ -19,10 +19,6 @@ class DefaultController extends AppController {
         $this->render('learning');
     }
 
-    public function leaderboard() {
-        $this->render('leaderboard');
-    }
-
     public function news() {
         $this->render('news');
     }

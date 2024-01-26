@@ -23,7 +23,7 @@ class SecurityController extends AppController
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $user = $this->userRepository->getUser($email);
+        $user = $this->userRepository->getUserByEmail($email);
 
         if(!$user) {
             return $this->render('login', ['messages' => ['User doesn\'t exist']]);
@@ -64,9 +64,8 @@ class SecurityController extends AppController
         $hashedPassword = hash('sha512', $salt . $password);
         $passwordWithSalt = $salt . '$' . $hashedPassword;
 
-        $user = new User($email, $username, $passwordWithSalt);
+        $this->userRepository->addUser($email, $username, $passwordWithSalt);
 
-        $this->userRepository->addUser($user);
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered! You can now login below.']]);
     }
 }
