@@ -10,7 +10,7 @@ class NewsRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM news;
+            SELECT * FROM news ORDER BY news_date DESC;
         ');
 
         $stmt->execute();

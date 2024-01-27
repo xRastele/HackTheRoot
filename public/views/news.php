@@ -23,9 +23,11 @@
             <h1 class="news-header">Cybersecurity</h1>
             <h2 class="news-header">news</h2>
             <div class="content-cybersec">
-                <p>cybersecurity news</p>
-                <p>cybersecurity news</p>
-                <p>cybersecurity news</p>
+                <div id="news-container">
+                    <div class="news-text"></div>
+                    <div class="news-source"></div>
+                    <div class="news-date"></div>
+                </div>
             </div>
         </div>
     </div>
