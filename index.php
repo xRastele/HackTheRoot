@@ -9,6 +9,8 @@ Routing::get('', 'DefaultController');
 Routing::get('register', 'DefaultController');
 Routing::get('leaderboard', 'LeaderboardController');
 Routing::get('news', 'NewsController');
+Routing::get('fetch-news', 'NewsController::fetchNews');
+
 Routing::get('learning', 'DefaultController');
 Routing::get('home', 'DefaultController');
 

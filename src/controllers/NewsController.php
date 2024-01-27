@@ -17,4 +17,11 @@ class NewsController extends AppController
         $this->render('news');
     }
 
+    public function fetchNews() {
+        header('Content-Type: application/json');
+        $news = $this->newsRepository->getNews();
+        echo json_encode($news);
+    }
+
+
 }
