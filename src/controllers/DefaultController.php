@@ -19,7 +19,4 @@ class DefaultController extends AppController {
         $this->render('learning');
     }
 
-    public function news() {
-        $this->render('news');
-    }
 }

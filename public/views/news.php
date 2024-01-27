@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/news.css">
+    <script type="text/javascript" src="public/js/news.js" defer></script>
     <title>HackTheRoot $ News</title>
 </head>
 <body>
