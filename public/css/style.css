@@ -87,6 +87,11 @@ nav a.active {
     color: #64EE85;
 }
 
+nav a {
+    flex: 1;
+    text-align: center;
+}
+
 nav {
     height: 10%;
     display: flex;
@@ -102,6 +107,14 @@ nav {
 
 nav img {
     height: 100%;
+}
+
+.no-valid {
+    border: 3px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+
 }
 
 @media only screen and (max-device-width: 420px) {

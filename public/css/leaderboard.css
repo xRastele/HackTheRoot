@@ -7,8 +7,7 @@
     align-items: stretch;
     grid-template-areas:
     ". leaderboard-top3 ."
-    ". leaderboard-rest ."
-    ". leaderboard-buttons .";
+    ". leaderboard-rest .";
     width: 50%;
 }
 
@@ -20,16 +19,25 @@
     grid-template-areas:
     ". . ."
     ". top1 ."
-    "top2 . top3"
+    "top2 . top3";
     ". . .";
     grid-area: leaderboard-top3;
 }
 
-.top1 { grid-area: top1; }
+.top1 {
+    display: flex;
+    flex-direction: column;
+    grid-area: top1; }
 
-.top2 { grid-area: top2; }
+.top2 {
+    display: flex;
+    flex-direction: column;
+    grid-area: top2; }
 
-.top3 { grid-area: top3; }
+.top3 {
+    display: flex;
+    flex-direction: column;
+    grid-area: top3; }
 
 .leaderboard-rest {  display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -42,25 +50,9 @@
     grid-area: leaderboard-rest;
 }
 
-.leaderboard-buttons {  display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-    "buttons-left buttons-count buttons-right";
-    grid-area: leaderboard-buttons;
-}
-
-.buttons-right { grid-area: buttons-right; }
-
-.buttons-left { grid-area: buttons-left; }
-
-.buttons-count { grid-area: buttons-count; }
-
 .sub-container {
     width: 100%;
-    height: 100%;
+    height: 90%;
     color: white;
     text-align: center;
     font-family: Play;
@@ -70,16 +62,34 @@
 .top1,
 .top2,
 .top3,
-.leaderboard-rest,
-.leaderboard-buttons
+.leaderboard-rest
 {
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 .leaderboard-rest {
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: inherit;
+    margin-top: 1vh;
+}
+
+.user-entry {
+    margin-top: 3.5vh;
+    border-radius: 12px;
+    background: #233141;
+    display: flex;
+    flex-direction: row;
+    padding: 1vh 1vh 1vh 1vh;
+}
+
+.user-entry-top3 {
+    border-radius: 155px;
+    background: #233141;
+}
+
+.username {
+    margin-right: 2vh;
 }

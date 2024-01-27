@@ -12,9 +12,14 @@
         <div class="leaderboard-top3">
             <?php foreach ($leaderboard->getUsers() as $index => $user): ?>
                 <?php if ($index < 3): ?>
-                    <div class="top<?= $index + 1; ?>">
+                    <div class="top<?= $index + 1; ?> user-entry-top3">
                         <img src="public/img/crown.svg">
-                        <?= $user->getUsername() ?> <br> <?= $user->getPoints(); ?> pts
+                        <div>
+                            <?= $index+1 . '. ' . $user->getUsername() ?>
+                        </div>
+                        <div>
+                            <img src="public/img/points_icon.svg"><?= $user->getPoints(); ?> pts
+                        </div>
                     </div>
                 <?php else: ?>
                     <?php break; ?>
@@ -25,15 +30,17 @@
             <?php foreach ($leaderboard->getUsers() as $index => $user): ?>
                 <?php if ($index >= 3): ?>
                     <div class="user-entry">
-                        <?= $user->getUsername() . ' - ' . $user->getPoints(); ?>
+
+                        <div class="username">
+                            <?= $index+1 . '. ' . $user->getUsername() ?>
+                        </div>
+                        <div class="points">
+                            <img src="public/img/points_icon.svg"><?= $user->getPoints() ?> pts
+                        </div>
+
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
-        </div>
-        <div class="leaderboard-buttons">
-            <div class="buttons-left"><-</div>
-            <div class="buttons-count">1/1</div>
-            <div class="buttons-right">-></div>
         </div>
     </div>
 </div>

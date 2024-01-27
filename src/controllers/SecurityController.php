@@ -42,6 +42,10 @@ class SecurityController extends AppController
         //return $this->render('news');
     }
 
+    private function arePasswordsSame($password, $confirmPassword) {
+        return $password === $confirmPassword;
+    }
+
     public function register()
     {
         if (!$this->isPost()) {
@@ -51,9 +55,19 @@ class SecurityController extends AppController
         $email = $_POST['email'] ?? null;
         $username = $_POST['username'] ?? null;
         $password = $_POST['password'] ?? null;
+        $confirmPassword = $_POST["confirmPassword"] ?? null;
 
-        if (empty($email) || empty($username) || empty($password)) {
+        if(!$this->arePasswordsSame($password, $confirmPassword))
+        {
+            return $this->render('register', ['messages' => ['Passwords must be the same']]);
+        }
+
+        if (empty($email) || empty($username) || empty($password) || empty($confirmPassword)) {
             return $this->render('register', ['messages' => ['Please fill in all fields']]);
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->render('register', ['messages' => ['Email address is invalid']]);
         }
 
         if ($this->userRepository->doesUserExist($email, $username)) {
