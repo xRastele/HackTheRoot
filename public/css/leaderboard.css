@@ -93,3 +93,7 @@
 .username {
     margin-right: 2vh;
 }
+
+.current-user {
+    background-color: #ABCF54;
+}
