@@ -1,9 +1,14 @@
+<?php
+include_once __DIR__.'/session.php';
+?>
 <nav>
+    <a class="username">Welcome, <?php echo $_SESSION["username"]; ?></a>
     <a href="/home">Home</a>
     <a href="/learning">Learning</a>
     <img src="public/img/logo_no_text.svg" alt="Logo">
     <a href="/leaderboard">Leaderboard</a>
     <a href="/news">News</a>
+    <a href="/logout">Logout</a>
 </nav>
 
 <script>

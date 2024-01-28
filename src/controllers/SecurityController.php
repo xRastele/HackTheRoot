@@ -4,6 +4,8 @@ require_once 'AppController.php';
 require_once __DIR__ .'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
+session_start();
+
 class SecurityController extends AppController
 {
     private $userRepository;
@@ -16,6 +18,10 @@ class SecurityController extends AppController
 
     public function login()
     {
+        if (isset($_SESSION["username"])) {
+            header("Location: home");
+        }
+
         if(!$this->isPost()) {
             return $this->render('login');
         }
@@ -36,10 +42,9 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Wrong password']]);
         }
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/home");
+        $_SESSION["username"] = $user->getUsername();
 
-        //return $this->render('news');
+        header("Location: home");
     }
 
     private function arePasswordsSame($password, $confirmPassword) {
@@ -48,6 +53,10 @@ class SecurityController extends AppController
 
     public function register()
     {
+        if (isset($_SESSION["username"])) {
+            header("Location: home");
+        }
+
         if (!$this->isPost()) {
             return $this->render('register');
         }
@@ -81,5 +90,23 @@ class SecurityController extends AppController
         $this->userRepository->addUser($email, $username, $passwordWithSalt);
 
         return $this->render('login', ['messages' => ['You\'ve been succesfully registered! You can now login below.']]);
+    }
+
+    public function logout() {
+        if(isset($_SESSION['username'])) {
+            $_SESSION = array();
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000,
+                    $params["path"], $params["domain"],
+                    $params["secure"], $params["httponly"]
+                );
+            }
+            session_destroy();
+            header('Location: login');
+        }
+        else {
+            header('Location: /home');
+        }
     }
 }

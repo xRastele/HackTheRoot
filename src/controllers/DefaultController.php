@@ -1,14 +1,16 @@
 <?php
 
 require_once 'AppController.php';
-
+session_start();
 class DefaultController extends AppController {
     public function index() {
-        $this->render('login');
-    }
-
-    public function register() {
-        $this->render('register');
+        if (isset($_SESSION["username"])) {
+            header("Location: home");
+        }
+        else
+        {
+            $this->render('login');
+        }
     }
 
     public function home() {
@@ -18,5 +20,4 @@ class DefaultController extends AppController {
     public function learning() {
         $this->render('learning');
     }
-
 }

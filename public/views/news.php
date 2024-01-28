@@ -1,3 +1,6 @@
+<?php
+include_once __DIR__.'/session.php';
+?>
 <!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
@@ -12,11 +15,12 @@
     <div class="sub-container">
         <div class="news-htr">
             <h1 class="news-header">HTR</h1>
-            <h2 class="news-header">news</h2>
-            <div class="content-htr">
-                <p>htr news</p>
-                <p>htr news</p>
-                <p>htr news</p>
+            <h2 class="news-header">notifications</h2>
+            <div class="content-notifications">
+                <div id="notifications-container">
+                    <div class="notifications-text"></div>
+                    <div class="notifications-date"></div>
+                </div>
             </div>
         </div>
         <div class="news-cybersec">

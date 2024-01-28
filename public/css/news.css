@@ -1,4 +1,4 @@
-body{
+body {
     color: white;
 }
 
@@ -52,6 +52,25 @@ h2 {
 }
 
 .news-div div {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.notification-div {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #233141;
+}
+
+.notification-div a {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.notification-div div {
     margin-top: 5px;
     font-size: 14px;
 }
