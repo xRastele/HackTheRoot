@@ -8,6 +8,7 @@
     grid-template-areas:
     ". leaderboard-top3 ."
     ". leaderboard-rest .";
+    ". pagination-grid .";
     width: 50%;
 }
 
@@ -96,4 +97,28 @@
 
 .current-user {
     background-color: #ABCF54;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.pagination button {
+    padding: 5px 15px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #ABCF54;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.pagination {
+
+    grid-area: pagination-grid;
 }

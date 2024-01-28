@@ -7,6 +7,7 @@ $currentUsername = $_SESSION['username'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/leaderboard.css">
+    <script src="public/js/leaderboard.js" defer></script>
     <title>HackTheRoot $ Leaderboard</title>
 </head>
 <body>
@@ -49,7 +50,13 @@ $currentUsername = $_SESSION['username'] ?? '';
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
+            <div class="pagination">
+                <button id="prevPage"><</button>
+                <span id="currentPage">1</span>
+                <button id="nextPage">></button>
+            </div>
         </div>
+
     </div>
 </div>
 </body>

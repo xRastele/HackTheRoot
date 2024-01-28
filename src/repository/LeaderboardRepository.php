@@ -12,7 +12,7 @@ class LeaderboardRepository extends Repository
         SELECT users.username, leaderboard.points_challenges
         FROM users
         INNER JOIN leaderboard ON users.user_id = leaderboard.user_id
-        ORDER BY leaderboard.points_challenges DESC LIMIT 7
+        ORDER BY leaderboard.points_challenges DESC LIMIT 10
     ');
 
         $stmt->execute();
