@@ -8,38 +8,25 @@ require_once 'src/controllers/NewsController.php';
 class Routing {
     public static $routes;
 
-    public static function get($url, $controllerAction) {
-        self::$routes[$url] = $controllerAction;
+    public static function get($url, $controller) {
+        self::$routes[$url] = $controller;
     }
 
-    public static function post($url, $controllerAction) {
-        self::$routes[$url] = $controllerAction;
+    public static function post($url, $controller) {
+        self::$routes[$url] = $controller;
     }
 
-    public static function run($url) {
-        if (!array_key_exists($url, self::$routes)) {
+    public static function run ($url) {
+        $action = explode("/", $url)[0];
+
+        if (!array_key_exists($action, self::$routes)) {
             die("This URL doesn't exist.");
         }
 
-        $controllerAction = self::$routes[$url];
-        $parts = explode("::", $controllerAction);
-        $controllerName = $parts[0];
-        $methodName = $parts[1] ?? $url;
+        $controller = self::$routes[$action];
+        $object = new $controller;
+        $action = $action ?: 'index';
 
-        if (count($parts) == 1) {
-            $methodName = $methodName ?: 'index';
-        }
-
-        if (!class_exists($controllerName)) {
-            die("Controller doesn't exist.");
-        }
-
-        $controllerObject = new $controllerName();
-
-        if (!method_exists($controllerObject, $methodName)) {
-            die("Method doesn't exist.");
-        }
-
-        $controllerObject->$methodName();
+        $object->$action();
     }
 }
