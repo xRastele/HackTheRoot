@@ -8,7 +8,7 @@ class UserRepository extends Repository
     public function getUserByEmail(string $email): ?User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users WHERE email = :email
+            SELECT * FROM users WHERE email = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -80,23 +80,25 @@ class UserRepository extends Repository
         return $user !== false;
     }
 
-    public function getAllUsersSortedLeaderboard(): array
+    public function getUserByUsername($username)
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT users.username, leaderboard.points_challenges
-            FROM users
-            INNER JOIN leaderboard ON users.user_id = leaderboard.user_id
-            ORDER BY leaderboard.points_challenges DESC;
+            SELECT * FROM users WHERE username = :username
         ');
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
 
-        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $result = [];
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        foreach ($users as $user) {
-            $result[] = new User($user['email'], $user['username'], $user['password'], $user['user_id']);
+        if ($user == false) {
+            return null;
         }
 
-        return $result;
+        return new User(
+            $user['email'],
+            $user['username'],
+            $user['password'],
+            $user['user_id']
+        );
     }
 }

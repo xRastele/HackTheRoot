@@ -12,12 +12,4 @@ class DefaultController extends AppController {
             $this->render('login');
         }
     }
-
-    public function home() {
-        $this->render('home');
-    }
-
-    public function learning() {
-        $this->render('learning');
-    }
 }

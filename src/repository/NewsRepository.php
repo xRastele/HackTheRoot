@@ -43,7 +43,7 @@ class NewsRepository extends Repository
         $stmt = $this->database->connect()->prepare('
             SELECT notifications.* FROM notifications 
             JOIN users ON notifications.user_id = users.user_id 
-            WHERE users.username = :username OR notifications.user_id = 0
+            WHERE users.username = :username
             ORDER BY notifications.notification_date DESC;
             ');
         $stmt->bindParam(":username", $current_username, PDO::PARAM_STR);
@@ -61,4 +61,25 @@ class NewsRepository extends Repository
 
         return $result;
     }
+
+    public function getLatestNews() {
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM news ORDER BY news_date DESC LIMIT 1;
+    ');
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getLatestNotification($username) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT notifications.* FROM notifications 
+            JOIN users ON notifications.user_id = users.user_id 
+            WHERE users.username = :username
+            ORDER BY notifications.notification_date DESC LIMIT 1;
+            ');
+        $stmt->bindParam(':username', $username, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

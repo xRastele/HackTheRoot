@@ -113,12 +113,15 @@
     background-color: #ABCF54;
 }
 
+.pagination button:hover {
+    background-color: #c3ec5f;
+}
+
 .pagination button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 
 .pagination {
-
     grid-area: pagination-grid;
 }

@@ -14,16 +14,19 @@ include_once __DIR__.'/session.php';
 
     <div class="sub-container">
         <div class="first-box">
-            <p>news here</p>
+            <p class="box-header">Latest news</p>
+            <p><?= $latestNews['news_text'] ?? 'No news'?></p>
+            <p><a class="button-link" href="news">Go to news</a></p>
         </div>
 
         <div class="second-box">
             <p>progress here</p>
         </div>
 
-
         <div class="third-box">
-            <p>news here</p>
+            <p class="box-header">Latest notification</p>
+            <p><?= $latestNotification['notification_text'] ?? 'No notifications'?></p>
+            <p><a class="button-link" href="news">Go to notifications</a></p>
         </div>
 
         <div class="fourth-box">
