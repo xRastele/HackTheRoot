@@ -90,6 +90,7 @@ nav a.active {
 nav a {
     flex: 1;
     text-align: center;
+    color: white;
 }
 
 nav {
