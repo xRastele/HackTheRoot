@@ -5,13 +5,13 @@ body {
 
 .sub-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 kolumn */
+    grid-template-columns: repeat(6, 1fr);
     gap: 1vh;
     width: 100%;
 }
 
 .module-container {
-    grid-column: span 2; /* Każdy moduł zajmuje 2 kolumny */
+    grid-column: span 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,7 +20,7 @@ body {
 
 .lessons-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 kolumn */
+    grid-template-columns: repeat(6, 1fr);
     gap: 1vh;
 }
 
@@ -46,11 +46,12 @@ body {
 }
 
 .lesson-name-and-progress-container {
-    grid-column: span 1; /* Każda lekcja zajmuje 1 kolumnę */
+    cursor: pointer;
+    grid-column: span 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #0E1828; /* Ciemne tło dla każdej lekcji */
+    background-color: #0E1828;
     padding: 1vh;
     border-radius: 5px;
 }

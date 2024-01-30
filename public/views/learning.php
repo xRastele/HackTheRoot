@@ -6,6 +6,7 @@ include_once __DIR__.'/session.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/learning.css">
+    <script src="public/js/learning.js" defer></script>
     <title>HackTheRoot $ Learning</title>
 </head>
 <body>
@@ -20,8 +21,8 @@ include_once __DIR__.'/session.php';
                 <div class="lessons-container">
                     <?php if (count($module->getLessons()) > 0): ?>
                         <?php foreach ($module->getLessons() as $lesson): ?>
-                            <div class="lesson-name-and-progress-container">
-                                <span id="lesson-name-only"><a href="learning/<?= $module->getModuleId() ?>/lesson/<?= $lesson->getLessonId() ?>"><?= $lesson->getLessonName() ?></a></span>
+                            <div class="lesson-name-and-progress-container" onclick="goToLesson(this)" data-lesson-id="<?= $lesson->getLessonId() ?>">
+                                <span id="lesson-name-only"><?= $lesson->getLessonName() ?></span>
                                 <span id="lesson-progress-only"><?= $lesson->getCompletedChallenges() ?>/<?= $lesson->getTotalChallenges() ?></span>
                             </div>
                         <?php endforeach; ?>

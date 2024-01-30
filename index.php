@@ -15,6 +15,9 @@ Routing::get('fetchNews', 'NewsController');
 Routing::get('fetchNotifications', 'NewsController');
 
 Routing::get('learning', 'LearningController');
+Routing::post('lesson', 'LessonController');
+Routing::post('submitChallenge', 'LessonController');
+
 Routing::get('home', 'HomeController');
 
 Routing::post('login', 'SecurityController');

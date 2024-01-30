@@ -6,6 +6,7 @@ require_once 'src/controllers/LeaderboardController.php';
 require_once 'src/controllers/NewsController.php';
 require_once 'src/controllers/HomeController.php';
 require_once 'src/controllers/LearningController.php';
+require_once 'src/controllers/LessonController.php';
 
 class Routing {
     public static $routes;

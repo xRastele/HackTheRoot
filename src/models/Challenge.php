@@ -3,15 +3,15 @@
 class Challenge {
     private $challengeId;
     private $lessonId;
-    private $rewardId;
+    private $reward;
     private $challengeText;
     private $challengeAnswer;
     private $isCompleted;
 
-    public function __construct($challengeId, $lessonId, $rewardId, $challengeText, $challengeAnswer, $isCompleted) {
+    public function __construct($challengeId, $lessonId, $reward, $challengeText, $challengeAnswer, $isCompleted) {
         $this->challengeId = $challengeId;
         $this->lessonId = $lessonId;
-        $this->rewardId = $rewardId;
+        $this->reward = $reward;
         $this->challengeText = $challengeText;
         $this->challengeAnswer = $challengeAnswer;
         $this->isCompleted = $isCompleted;
@@ -25,8 +25,8 @@ class Challenge {
         return $this->lessonId;
     }
 
-    public function getRewardId() {
-        return $this->rewardId;
+    public function getReward() {
+        return $this->reward;
     }
 
     public function getChallengeText() {
@@ -39,5 +39,9 @@ class Challenge {
 
     public function getIsCompleted() {
         return $this->isCompleted;
+    }
+
+    public function checkAnswer($answer) {
+        return $this->challengeAnswer === $answer;
     }
 }
