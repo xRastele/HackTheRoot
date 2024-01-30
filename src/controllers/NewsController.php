@@ -18,12 +18,18 @@ class NewsController extends AppController
     }
 
     public function fetchNews() {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         header('Content-Type: application/json');
         $news = $this->newsRepository->getNews();
         echo json_encode($news);
     }
 
     public function fetchNotifications() {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         header('Content-Type: application/json');
         $notifications = $this->newsRepository->getNotifications();
         echo json_encode($notifications);

@@ -14,6 +14,9 @@ class LeaderboardController extends AppController
     }
 
     public function leaderboard() {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         $leaderboard = $this->leaderboardRepository->getLeaderboard();
         $this->render('leaderboard', ['leaderboard' => $leaderboard]);
     }

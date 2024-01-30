@@ -23,9 +23,13 @@ class HomeController extends AppController
 
     public function home() {
         session_start();
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
+
         $latestNotification = $this->newsRepository->getLatestNotification($_SESSION['username'] ?? null);
 
-        $user = $this->userRepository->getUserByUsername($_SESSION['username']);
+        $user = $this->userRepository->getUserByUsername($_SESSION['username'] ?? null);
         $userId = $user->getUserId();
 
         $modulesWithProgress = $this->learningRepository->getLearningProgress($userId);

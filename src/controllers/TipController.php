@@ -17,6 +17,10 @@ class TipController extends AppController
 
     public function insertTip()
     {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tipText'])) {
             $user = $this->userRepository->getUserByUsername($_SESSION['username']);
             if ($user && $user->getIsAdmin()) {

@@ -17,6 +17,9 @@ class LessonController extends AppController
 
     public function lesson()
     {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lesson_id'])) {
             $lessonId = $_POST['lesson_id'];
             $this->lessonRepository = new LessonRepository();
@@ -34,6 +37,9 @@ class LessonController extends AppController
 
     public function submitChallenge()
     {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = json_decode(file_get_contents('php://input'), true);
             $challengeId = $data['challengeId'] ?? '';

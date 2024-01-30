@@ -17,6 +17,9 @@ class LearningController extends AppController
     }
 
     public function learning() {
+        if (!isset($_SESSION["username"])) {
+            header("Location: /");
+        }
         $user = $this->userRepository->getUserByUsername($_SESSION['username']);
         $userId = $user->getUserId();
         $modules = $this->learningRepository->getLearningProgress($userId);

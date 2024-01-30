@@ -21,7 +21,8 @@ class Routing {
     }
 
     public static function run ($url) {
-        $action = explode("/", $url)[0];
+        $parsedUrl = explode("/", $url);
+        $action = $parsedUrl[0];
 
         if (!array_key_exists($action, self::$routes)) {
             die("This URL doesn't exist.");
@@ -29,8 +30,12 @@ class Routing {
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        $action = $action ?: 'index';
 
+        if (isset($parsedUrl[1])) {
+            die("This URL doesn't exist.");
+        }
+
+        $action = $action ?: 'index';
         $object->$action();
     }
 }
