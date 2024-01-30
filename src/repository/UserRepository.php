@@ -23,7 +23,8 @@ class UserRepository extends Repository
             $user['email'],
             $user['username'],
             $user['password'],
-            $user['user_id']
+            $user['user_id'],
+            $user['is_admin']
         );
     }
 
@@ -36,7 +37,13 @@ class UserRepository extends Repository
         $result = [];
 
         foreach ($users as $user) {
-            $result[] = new User($user['email'], $user['username'], $user['password'], $user['user_id']);
+            $result[] = new User(
+                $user['email'],
+                $user['username'],
+                $user['password'],
+                $user['user_id'],
+                $user['is_admin']
+            );
         }
 
         return $result;
@@ -98,7 +105,8 @@ class UserRepository extends Repository
             $user['email'],
             $user['username'],
             $user['password'],
-            $user['user_id']
+            $user['user_id'],
+            $user['is_admin']
         );
     }
 }

@@ -5,13 +5,25 @@ class User
     private $username;
     private $password;
     private $userId;
+    private $isAdmin;
 
-    public function __construct(string $email, string $username, string $password, int $userId)
+    public function __construct(string $email, string $username, string $password, int $userId, bool $isAdmin)
     {
         $this->email = $email;
         $this->username = $username;
         $this->password = $password;
         $this->userId = $userId;
+        $this->isAdmin = $isAdmin;
+    }
+
+    public function getIsAdmin(): bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(bool $isAdmin): void
+    {
+        $this->isAdmin = $isAdmin;
     }
 
     public function getEmail(): string
@@ -53,4 +65,6 @@ class User
     {
         return $this->userId;
     }
+
+
 }
