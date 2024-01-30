@@ -33,18 +33,20 @@ include_once __DIR__.'/../session.php';
             <?php foreach ($lesson->getChallenges() as $challenge): ?>
                 <h3>
                     <?= $challenge->getChallengeText(); ?>
-                    <?php
-                    if($challenge->getIsCompleted()) {
-                        echo "- Completed (" . $challenge->getReward() . ' pts)';
-                    } else {
-                        echo "- Not completed (" . $challenge->getReward() . ' pts)';
-                    }
-                    ?>
+
+                        <?php
+                        if($challenge->getIsCompleted()) {
+                            echo "- Completed (" . $challenge->getReward() . ' pts)';
+                        } else {
+                            echo "- <span id='is-done-".$challenge->getChallengeId() . "'>Not completed</span> (" . $challenge->getReward() . ' pts)';
+                        }
+                        ?>
+                    </span>
                 </h3>
                 <?php if (!$challenge->getIsCompleted()): ?>
                     <form class="challenge-form" data-challenge-id="<?= $challenge->getChallengeId(); ?>">
-                        <input type="text" name="answer" placeholder="Type your answer here">
-                        <button type="submit">Submit</button>
+                        <input id="input-to-hide-<?= $challenge->getChallengeId(); ?>" type="text" name="answer" placeholder="Type your answer here">
+                        <button id="button-to-hide-<?= $challenge->getChallengeId(); ?>" type="submit">Submit</button>
                     </form>
                     <div class="challenge-feedback" id="feedback-<?= $challenge->getChallengeId(); ?>"></div>
                 <?php endif; ?>

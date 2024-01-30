@@ -83,6 +83,13 @@ a:hover {
     color: #64EE85;
 }
 
+.no-valid {
+    border: 3px solid red;
+    border-radius: 1em;
+    box-shadow: 0 0 0.2em red;
+    outline: none;
+}
+
 nav a.active {
     color: #64EE85;
 }
@@ -91,6 +98,7 @@ nav a {
     flex: 1;
     text-align: center;
     color: white;
+    margin: 0 5px;
 }
 
 nav {
@@ -110,14 +118,6 @@ nav img {
     height: 100%;
 }
 
-.no-valid {
-    border: 3px solid red;
-    border-radius: 1em;
-    box-shadow: 0 0 0.2em red;
-    outline: none;
-
-}
-
 nav .username {
     color: white;
 }
@@ -125,6 +125,11 @@ nav .username {
 nav .username:hover {
     color: white;
 }
+
+.hidden {
+    display: none;
+}
+
 @media only screen and (max-device-width: 420px) {
     img {
         width: 100%;
@@ -134,8 +139,34 @@ nav .username:hover {
         margin: auto;
     }
 
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 5px 0;
+    }
+
+    nav a {
+        margin: 1px 0;
+        font-size: 2vh;
+    }
+
+    nav img {
+        display: none;
+    }
+
+    nav .username {
+        margin-bottom: 10px;
+    }
+
+    .container {
+        width: 100vw;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #0D1B2B 0%, #1A314B 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        overflow-y: auto;
+    }
 }
 
-.hidden {
-    display: none;
-}
