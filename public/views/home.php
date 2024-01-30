@@ -30,7 +30,8 @@ include_once __DIR__.'/session.php';
         </div>
 
         <div class="fourth-box">
-            <p>continue learning</p>
+            <p class="box-header">Tip of the Day</p>
+            <p><?= $tipOfTheDay ? $tipOfTheDay->getTipText() : 'No tip for today :(' ?></p>
         </div>
     </div>
 </div>

@@ -27,4 +27,5 @@ class LessonRepository extends Repository {
             $challenges
         );
     }
+
 }
