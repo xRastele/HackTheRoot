@@ -1,0 +1,55 @@
+.admin-panel {
+    background-color: #233141;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel h2 {
+    color: white;
+    text-align: center;
+}
+
+#tipForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#tipForm textarea {
+    padding: 10px;
+    height: 10vh;
+    width: 30vh;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: horizontal;
+}
+
+#message {
+    margin-top: 15px;
+    padding: 10px;
+    text-align: center;
+    border-color: #c3e6cb;
+}
+
+#tipForm button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#tipForm button:hover {
+    background-color: #0056b3;
+}
+
+#message.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

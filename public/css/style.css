@@ -130,6 +130,11 @@ nav .username:hover {
     display: none;
 }
 
+.module-progress {
+    color: white;
+    font-size: 3vh;
+}
+
 @media only screen and (max-device-width: 420px) {
     img {
         width: 100%;

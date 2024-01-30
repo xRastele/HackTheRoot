@@ -20,7 +20,29 @@ include_once __DIR__.'/session.php';
         </div>
 
         <div class="second-box">
-            <p>progress here</p>
+            <p class="box-header">Module Progress</p>
+            <?php foreach ($modulesWithProgress as $module): ?>
+                <div class="module-progress">
+                    <?= $module->getModuleName() ?>
+                    <?php
+                    $totalChallenges = 0;
+                    $completedChallenges = 0;
+                    foreach ($module->getLessons() as $lesson) {
+                        $totalChallenges += $lesson->getTotalChallenges();
+                        $completedChallenges += $lesson->getCompletedChallenges();
+                    }
+
+                    $progressPercent = '';
+                    if($totalChallenges > 0)
+                    {
+                        $progressPercent = ' - '.strval(round(($completedChallenges / $totalChallenges) * 100, 2)) . '%';
+                    }
+                    else
+                        $progressPercent = '- Challenges coming soon..';
+                    ?>
+                    <?= $progressPercent ?>
+                </div>
+            <?php endforeach; ?>
         </div>
 
         <div class="third-box">
