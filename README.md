@@ -61,3 +61,6 @@ If you want to tailor Docker settings to your preferences, you can make adjustme
 
 ### Admin
 ![Alt text](images/admin.png)
+
+### ER Diagram
+![Alt text](images/er.png)
