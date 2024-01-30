@@ -12,6 +12,7 @@ class LeaderboardRepository extends Repository
         SELECT users.username, leaderboard.points_challenges
         FROM users
         INNER JOIN leaderboard ON users.user_id = leaderboard.user_id
+        WHERE users.is_admin = false
         ORDER BY leaderboard.points_challenges DESC LIMIT 10
     ');
 
