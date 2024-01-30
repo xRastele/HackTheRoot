@@ -49,6 +49,48 @@ $$;
 ALTER FUNCTION public.add_welcome_notification() OWNER TO postgres;
 
 --
+-- Name: clear_all_tables(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.clear_all_tables() RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    TRUNCATE TABLE modules CASCADE;
+    TRUNCATE TABLE lessons CASCADE;
+    TRUNCATE TABLE news CASCADE;
+    TRUNCATE TABLE rewards CASCADE;
+    TRUNCATE TABLE challenges CASCADE;
+    TRUNCATE TABLE users CASCADE;
+    TRUNCATE TABLE leaderboard CASCADE;
+    TRUNCATE TABLE notifications CASCADE;
+    TRUNCATE TABLE user_progress CASCADE;
+    TRUNCATE TABLE tips_of_the_day CASCADE;
+END;
+$$;
+
+
+ALTER FUNCTION public.clear_all_tables() OWNER TO postgres;
+
+--
+-- Name: clear_few_tables(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.clear_few_tables() RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    TRUNCATE TABLE users CASCADE;
+    TRUNCATE TABLE leaderboard CASCADE;
+    TRUNCATE TABLE news CASCADE;
+    TRUNCATE TABLE notifications CASCADE;
+END;
+$$;
+
+
+ALTER FUNCTION public.clear_few_tables() OWNER TO postgres;
+
+--
 -- Name: update_leaderboard_points(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -329,6 +371,40 @@ ALTER SEQUENCE public.rewards_reward_id_seq OWNED BY public.rewards.reward_id;
 
 
 --
+-- Name: tips_of_the_day; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tips_of_the_day (
+    tip_id integer NOT NULL,
+    tip_text text DEFAULT 'Something went wrong, no tip for today :('::text
+);
+
+
+ALTER TABLE public.tips_of_the_day OWNER TO postgres;
+
+--
+-- Name: tips_of_the_day_tip_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tips_of_the_day_tip_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.tips_of_the_day_tip_id_seq OWNER TO postgres;
+
+--
+-- Name: tips_of_the_day_tip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tips_of_the_day_tip_id_seq OWNED BY public.tips_of_the_day.tip_id;
+
+
+--
 -- Name: user_progress; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -444,6 +520,13 @@ ALTER TABLE ONLY public.rewards ALTER COLUMN reward_id SET DEFAULT nextval('publ
 
 
 --
+-- Name: tips_of_the_day tip_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tips_of_the_day ALTER COLUMN tip_id SET DEFAULT nextval('public.tips_of_the_day_tip_id_seq'::regclass);
+
+
+--
 -- Name: user_progress progress_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -472,6 +555,11 @@ COPY public.challenges (challenge_id, lesson_id, reward_id, challenge_text, chal
 --
 
 COPY public.leaderboard (user_id, points_challenges) FROM stdin;
+49	0
+47	50
+50	0
+48	150
+51	0
 \.
 
 
@@ -514,6 +602,11 @@ COPY public.news (news_id, news_text, news_source, news_date) FROM stdin;
 --
 
 COPY public.notifications (notification_id, user_id, notification_date, notification_text) FROM stdin;
+6	47	2024-01-30 13:48:37.315151	Welcome to the HackTheRoot, good luck!
+7	48	2024-01-30 13:50:45.198452	Welcome to the HackTheRoot, good luck!
+8	49	2024-01-30 13:51:44.568863	Welcome to the HackTheRoot, good luck!
+9	50	2024-01-30 21:28:22.341366	Welcome to the HackTheRoot, good luck!
+10	51	2024-01-30 21:36:49.553502	Welcome to the HackTheRoot, good luck!
 \.
 
 
@@ -532,10 +625,23 @@ COPY public.rewards (reward_id, reward_points) FROM stdin;
 
 
 --
+-- Data for Name: tips_of_the_day; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tips_of_the_day (tip_id, tip_text) FROM stdin;
+1	Keep amazing notes from day 1 of your work!
+1	Draw a network map and identify user privilege
+13	Test tip
+\.
+
+
+--
 -- Data for Name: user_progress; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.user_progress (progress_id, user_id, challenge_id, is_completed, completion_date) FROM stdin;
+9	48	1	t	2024-01-30 21:28:06.970006
+10	48	2	f	2024-01-30 21:36:30.067727
 \.
 
 
@@ -544,6 +650,11 @@ COPY public.user_progress (progress_id, user_id, challenge_id, is_completed, com
 --
 
 COPY public.users (user_id, email, username, password, is_admin) FROM stdin;
+47	admin@htr.com	admin	80f6a8849c0b9ac00e1759b2ffc3eebe$079be645955eca92ffd8c17f73c169b8563cf4b0fe689e594296ce51c678be1591899f77d9d91d89009949840a7d052553d1c71ce16203570d01a9c2b7488549	t
+48	user@htr.com	user	b2abfd6fca7ca731840148b08dd1040a$6e193f04cd2dd22a2f10b053c104ab401e2834eb06fbe94041e09af6642b4d71e5a4b2c455c73b288c38d62cea11a38fcf5d6d55d0da3e9c1365e75baea28a56	f
+49	user2@htr.com	user2	752779df551d169e7259ddd8d2810476$d0762557e687157a809949b037e4c812ed7ec0f2c4c747ba0332726e2d6408a278e5a5c0a0553f7504626224ded8e6aa606808e6ad477f1a981171a20dcc5e00	f
+50	user3@htr.com	user3	f6b6bc73074bb77b4432807746740008$a80391a3bdfe5035b47b745d40f480d83f46ff9c271e4a82ad54fee45502e22545073a39ce47583b6c6db83f50322d8141cc77a9ed4d9e0763282c9ef980bdf2	f
+51	user4@htr.com	user4	61487d400f9a460bc52722f393c4c1ab$d2fce086caf49f32d4b22340001c344ccecbca634ef52d4ee1e31e50c4887399203aff9884a9044f01636413792ef128ef099f86fe160492d665f2de18838e2e	f
 \.
 
 
@@ -551,21 +662,21 @@ COPY public.users (user_id, email, username, password, is_admin) FROM stdin;
 -- Name: challenges_challenge_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.challenges_challenge_id_seq', 3, true);
+SELECT pg_catalog.setval('public.challenges_challenge_id_seq', 1, true);
 
 
 --
 -- Name: lessons_lesson_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.lessons_lesson_id_seq', 6, true);
+SELECT pg_catalog.setval('public.lessons_lesson_id_seq', 1, true);
 
 
 --
 -- Name: modules_module_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.modules_module_id_seq', 4, true);
+SELECT pg_catalog.setval('public.modules_module_id_seq', 3, true);
 
 
 --
@@ -579,7 +690,7 @@ SELECT pg_catalog.setval('public.news_news_id_seq', 3, true);
 -- Name: notifications_notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.notifications_notification_id_seq', 1, true);
+SELECT pg_catalog.setval('public.notifications_notification_id_seq', 10, true);
 
 
 --
@@ -590,17 +701,24 @@ SELECT pg_catalog.setval('public.rewards_reward_id_seq', 1, false);
 
 
 --
+-- Name: tips_of_the_day_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tips_of_the_day_tip_id_seq', 13, true);
+
+
+--
 -- Name: user_progress_progress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_progress_progress_id_seq', 1, true);
+SELECT pg_catalog.setval('public.user_progress_progress_id_seq', 10, true);
 
 
 --
 -- Name: users_userid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_userid_seq', 1, true);
+SELECT pg_catalog.setval('public.users_userid_seq', 51, true);
 
 
 --
