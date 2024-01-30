@@ -26,6 +26,8 @@ To operate this application, it's essential to have the following tool installed
 
 4. Execute dbdump/dump.sql on the database (`localhost:5433`, db: `HackTheRoot`, login:pwd - `postgres:postgres`)
 
+5. (Optional) Run `SELECT clear_few_tables();` in your DB console to clear tables: `users, leaderboard, news, notifications` or `SELECT clear_all_tables();` to clear them all
+
 ## Launching
 
 Upon a successful initiation of the application with the `docker-compose up` command and importing data to database, you can access your website at:
