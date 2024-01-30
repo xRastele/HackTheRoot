@@ -35,3 +35,29 @@ Upon a successful initiation of the application with the `docker-compose up` com
 ## Customization
 
 If you want to tailor Docker settings to your preferences, you can make adjustments by modifying the files `docker-compose.yml`, `nginx/nginx.conf`, or the `Dockerfile` located within the `php` and `nginx` directories.
+
+## Screenshots of running application
+
+### Login
+![Alt text](images/login.png)
+
+### Register
+![Alt text](images/register.png)
+
+### Home
+![Alt text](images/home.png)
+
+### Learning
+![Alt text](images/learning.png)
+
+### SQL Injection Lesson
+![Alt text](images/lesson.png)
+
+### Leaderboard
+![Alt text](images/leaderboard.png)
+
+### News
+![Alt text](images/news.png)
+
+### Admin
+![Alt text](images/admin.png)
