@@ -32,14 +32,14 @@ class SecurityController extends AppController
         $user = $this->userRepository->getUserByEmail($email);
 
         if(!$user) {
-            return $this->render('login', ['messages' => ['User doesn\'t exist']]);
+            return $this->render('login', ['messages' => ['Wrong email or password']]);
         }
 
         list($salt, $hashedPassword) = explode('$', $user->getPassword());
         $hashedInputPassword = hash('sha512', $salt . $password);
 
         if ($hashedInputPassword !== $hashedPassword) {
-            return $this->render('login', ['messages' => ['Wrong password']]);
+            return $this->render('login', ['messages' => ['Wrong email or password']]);
         }
 
         $_SESSION["username"] = $user->getUsername();
