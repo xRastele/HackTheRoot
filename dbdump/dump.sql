@@ -541,156 +541,38 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 
 
 --
--- Data for Name: challenges; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.challenges (challenge_id, lesson_id, reward_id, challenge_text, challenge_answer) FROM stdin;
-1	1	1	There is a risk of SQL injection modifying database data (yes/no)	yes
-2	1	2	What can attacker insert into username field to log in without password? SELECT * FROM users WHERE username = '$username' AND password = '$password'; (give exact same answer as in the text)	' OR '1'='1
-\.
-
-
---
--- Data for Name: leaderboard; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.leaderboard (user_id, points_challenges) FROM stdin;
-49	0
-47	50
-50	0
-48	150
-51	0
-\.
-
-
---
--- Data for Name: lessons; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.lessons (lesson_id, module_id, lesson_name) FROM stdin;
-1	1	SQL Injection
-3	1	File Inclusion
-4	2	Linux commands
-5	2	Bash
-2	1	Cross-Site Scripting
-\.
-
-
---
--- Data for Name: modules; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.modules (module_id, module_name) FROM stdin;
-1	ATTACK
-2	GENERAL
-3	DEFENCE
-\.
-
-
---
--- Data for Name: news; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.news (news_id, news_text, news_source, news_date) FROM stdin;
-2	Rosyjscy hackerzy zaatakowali pocztę HP i Microsoftu	https://niebezpiecznik.pl/post/rosyjscy-hackerzy-zaatakowali-poczte-hp-i-microsoftu/	2024-01-27 15:17:49
-1	Logi applowego AirDropa pozwalają na ustalenie tożsamości nadawcy. Chińskie władze pochwaliły się, że dysponują narzędziem do deanonimizacji nadawców „niebezpiecznych treści”.	https://sekurak.pl/logi-applowego-airdropa-pozwalaja-na-ustalenie-tozsamosci-nadawcy-chinskie-wladze-pochwalily-sie-ze-dysponuja-narzedziem-do-deanonimizacji-nadawcow-niebezpiecznych-tresci/	2024-01-25 10:52:00
-\.
-
-
---
--- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.notifications (notification_id, user_id, notification_date, notification_text) FROM stdin;
-6	47	2024-01-30 13:48:37.315151	Welcome to the HackTheRoot, good luck!
-7	48	2024-01-30 13:50:45.198452	Welcome to the HackTheRoot, good luck!
-8	49	2024-01-30 13:51:44.568863	Welcome to the HackTheRoot, good luck!
-9	50	2024-01-30 21:28:22.341366	Welcome to the HackTheRoot, good luck!
-10	51	2024-01-30 21:36:49.553502	Welcome to the HackTheRoot, good luck!
-\.
-
-
---
--- Data for Name: rewards; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.rewards (reward_id, reward_points) FROM stdin;
-1	50
-2	100
-3	150
-4	200
-5	250
-6	300
-\.
-
-
---
--- Data for Name: tips_of_the_day; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.tips_of_the_day (tip_id, tip_text) FROM stdin;
-1	Keep amazing notes from day 1 of your work!
-1	Draw a network map and identify user privilege
-13	Test tip
-\.
-
-
---
--- Data for Name: user_progress; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.user_progress (progress_id, user_id, challenge_id, is_completed, completion_date) FROM stdin;
-9	48	1	t	2024-01-30 21:28:06.970006
-10	48	2	f	2024-01-30 21:36:30.067727
-\.
-
-
---
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.users (user_id, email, username, password, is_admin) FROM stdin;
-47	admin@htr.com	admin	80f6a8849c0b9ac00e1759b2ffc3eebe$079be645955eca92ffd8c17f73c169b8563cf4b0fe689e594296ce51c678be1591899f77d9d91d89009949840a7d052553d1c71ce16203570d01a9c2b7488549	t
-48	user@htr.com	user	b2abfd6fca7ca731840148b08dd1040a$6e193f04cd2dd22a2f10b053c104ab401e2834eb06fbe94041e09af6642b4d71e5a4b2c455c73b288c38d62cea11a38fcf5d6d55d0da3e9c1365e75baea28a56	f
-49	user2@htr.com	user2	752779df551d169e7259ddd8d2810476$d0762557e687157a809949b037e4c812ed7ec0f2c4c747ba0332726e2d6408a278e5a5c0a0553f7504626224ded8e6aa606808e6ad477f1a981171a20dcc5e00	f
-50	user3@htr.com	user3	f6b6bc73074bb77b4432807746740008$a80391a3bdfe5035b47b745d40f480d83f46ff9c271e4a82ad54fee45502e22545073a39ce47583b6c6db83f50322d8141cc77a9ed4d9e0763282c9ef980bdf2	f
-51	user4@htr.com	user4	61487d400f9a460bc52722f393c4c1ab$d2fce086caf49f32d4b22340001c344ccecbca634ef52d4ee1e31e50c4887399203aff9884a9044f01636413792ef128ef099f86fe160492d665f2de18838e2e	f
-\.
-
-
---
 -- Name: challenges_challenge_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.challenges_challenge_id_seq', 1, true);
+SELECT pg_catalog.setval('public.challenges_challenge_id_seq', 3, true);
 
 
 --
 -- Name: lessons_lesson_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.lessons_lesson_id_seq', 1, true);
+SELECT pg_catalog.setval('public.lessons_lesson_id_seq', 6, true);
 
 
 --
 -- Name: modules_module_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.modules_module_id_seq', 3, true);
+SELECT pg_catalog.setval('public.modules_module_id_seq', 4, true);
 
 
 --
 -- Name: news_news_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.news_news_id_seq', 3, true);
+SELECT pg_catalog.setval('public.news_news_id_seq', 1, true);
 
 
 --
 -- Name: notifications_notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.notifications_notification_id_seq', 10, true);
+SELECT pg_catalog.setval('public.notifications_notification_id_seq', 1, true);
 
 
 --
@@ -704,22 +586,21 @@ SELECT pg_catalog.setval('public.rewards_reward_id_seq', 1, false);
 -- Name: tips_of_the_day_tip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.tips_of_the_day_tip_id_seq', 13, true);
+SELECT pg_catalog.setval('public.tips_of_the_day_tip_id_seq', 1, true);
 
 
 --
 -- Name: user_progress_progress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_progress_progress_id_seq', 10, true);
+SELECT pg_catalog.setval('public.user_progress_progress_id_seq', 1, true);
 
 
 --
 -- Name: users_userid_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_userid_seq', 51, true);
-
+SELECT pg_catalog.setval('public.users_userid_seq', 6, true);
 
 --
 -- Name: challenges challenges_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
@@ -808,21 +689,6 @@ ALTER TABLE ONLY public.users
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_username_key UNIQUE (username);
 
-
---
--- Name: users trigger_add_welcome_notification; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER trigger_add_welcome_notification AFTER INSERT ON public.users FOR EACH ROW EXECUTE FUNCTION public.add_welcome_notification();
-
-
---
--- Name: user_progress trigger_update_leaderboard_points; Type: TRIGGER; Schema: public; Owner: postgres
---
-
-CREATE TRIGGER trigger_update_leaderboard_points AFTER INSERT OR UPDATE OF is_completed ON public.user_progress FOR EACH ROW WHEN ((new.is_completed = true)) EXECUTE FUNCTION public.update_leaderboard_points();
-
-
 --
 -- Name: challenges challenges_lesson_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
@@ -872,8 +738,8 @@ ALTER TABLE ONLY public.user_progress
 
 
 --
--- Name: user_progress user_progress_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
+-- Name: user_progress user_progress_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 
 ALTER TABLE ONLY public.user_progress
     ADD CONSTRAINT user_progress_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON DELETE CASCADE;
@@ -882,4 +748,65 @@ ALTER TABLE ONLY public.user_progress
 --
 -- PostgreSQL database dump complete
 --
+
+-- Insert data for table 'users'
+INSERT INTO public.users (user_id, email, username, password, is_admin) VALUES
+(1, 'admin@htr.com', 'admin', '80f6a8849c0b9ac00e1759b2ffc3eebe$079be645955eca92ffd8c17f73c169b8563cf4b0fe689e594296ce51c678be1591899f77d9d91d89009949840a7d052553d1c71ce16203570d01a9c2b7488549', true),
+(2, 'user@htr.com', 'user', 'b2abfd6fca7ca731840148b08dd1040a$6e193f04cd2dd22a2f10b053c104ab401e2834eb06fbe94041e09af6642b4d71e5a4b2c455c73b288c38d62cea11a38fcf5d6d55d0da3e9c1365e75baea28a56', false),
+(3, 'user2@htr.com', 'user2', '752779df551d169e7259ddd8d2810476$d0762557e687157a809949b037e4c812ed7ec0f2c4c747ba0332726e2d6408a278e5a5c0a0553f7504626224ded8e6aa606808e6ad477f1a981171a20dcc5e00', false),
+(4, 'user3@htr.com', 'user3', 'f6b6bc73074bb77b4432807746740008$a80391a3bdfe5035b47b745d40f480d83f46ff9c271e4a82ad54fee45502e22545073a39ce47583b6c6db83f50322d8141cc77a9ed4d9e0763282c9ef980bdf2', false),
+(5, 'user4@htr.com', 'user4', '61487d400f9a460bc52722f393c4c1ab$d2fce086caf49f32d4b22340001c344ccecbca634ef52d4ee1e31e50c4887399203aff9884a9044f01636413792ef128ef099f86fe160492d665f2de18838e2e', false);
+
+-- Insert data for table 'rewards'
+INSERT INTO public.rewards (reward_points) VALUES
+(50),
+(100),
+(150),
+(200),
+(250),
+(300);
+
+-- Insert data for table 'modules'
+INSERT INTO public.modules (module_id, module_name) VALUES
+(1, 'ATTACK'),
+(2, 'GENERAL'),
+(3, 'DEFENCE');
+
+-- Insert data for table 'lessons'
+INSERT INTO public.lessons (lesson_id, module_id, lesson_name) VALUES
+(1, 1, 'SQL Injection'),
+(2, 1, 'File Inclusion'),
+(3, 2, 'Linux commands'),
+(4, 2, 'Bash'),
+(5, 1, 'Cross-Site Scripting');
+
+-- Insert data for table 'challenges'
+INSERT INTO public.challenges (challenge_id, lesson_id, reward_id, challenge_text, challenge_answer) VALUES
+(1, 1, 1, 'There is a risk of SQL injection modifying database data (yes/no)', 'yes'),
+(2, 1, 2, 'What can attacker insert into username field to log in without password? SELECT * FROM users WHERE username = ''$username'' AND password = ''$password''; (give exact same answer as in the text)', ''' OR ''1''=''1');
+
+-- Insert data for table 'news'
+INSERT INTO public.news (news_text, news_source, news_date) VALUES
+('Rosyjscy hackerzy zaatakowali pocztę HP i Microsoftu', 'https://niebezpiecznik.pl/post/rosyjscy-hackerzy-zaatakowali-poczte-hp-i-microsoftu/', '2024-01-27 15:17:49'),
+('Logi applowego AirDropa pozwalają na ustalenie tożsamości nadawcy. Chińskie władze pochwaliły się, że dysponują narzędziem do deanonimizacji nadawców „niebezpiecznych treści”.', 'https://sekurak.pl/logi-applowego-airdropa-pozwalaja-na-ustalenie-tozsamosci-nadawcy-chinskie-wladze-pochwalily-sie-ze-dysponuja-narzedziem-do-deanonimizacji-nadawcow-niebezpiecznych-tresci/', '2024-01-25 10:52:00');
+
+-- Insert data for table 'tips_of_the_day'
+INSERT INTO public.tips_of_the_day (tip_text) VALUES
+('Keep amazing notes from day 1 of your work!'),
+('Draw a network map and identify user privilege'),
+('Test tip');
+
+
+--
+-- Name: users trigger_add_welcome_notification; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER trigger_add_welcome_notification AFTER INSERT ON public.users FOR EACH ROW EXECUTE FUNCTION public.add_welcome_notification();
+
+
+--
+-- Name: user_progress trigger_update_leaderboard_points; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER trigger_update_leaderboard_points AFTER INSERT OR UPDATE OF is_completed ON public.user_progress FOR EACH ROW WHEN ((new.is_completed = true)) EXECUTE FUNCTION public.update_leaderboard_points();
 
