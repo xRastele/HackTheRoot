@@ -1,5 +1,5 @@
 # HackTheRoot
-A web application designed for learning cybersecurity through basic Capture The Flag (CTF) challenges.
+A web application designed for learning cybersecurity through straightforward question-based challenges.
 
 This project was undertaken as a part of the coursework for fulfilling the requirements of a university subject.
 
